@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="500" viewBox="0 0 1200 500" role="img" aria-labelledby="title desc">
+  <title id="title">RGB delta sampling pipeline for a 33-cubed LUT</title>
+  <desc id="desc">An aligned original and corrected image pair is sampled into RGB deltas, averaged in a 33-cubed lattice, and written as a Resolve cube LUT.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#080b13"/><stop offset="1" stop-color="#171023"/></linearGradient>
+    <linearGradient id="original" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#17324d"/><stop offset="0.48" stop-color="#71849b"/><stop offset="1" stop-color="#d5b98f"/></linearGradient>
+    <linearGradient id="corrected" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#14394b"/><stop offset="0.48" stop-color="#698d8e"/><stop offset="1" stop-color="#e2a86e"/></linearGradient>
+    <linearGradient id="delta" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#1d4ed8"/><stop offset="0.5" stop-color="#020617"/><stop offset="1" stop-color="#f97316"/></linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/></marker>
+  </defs>
+  <rect width="1200" height="500" rx="24" fill="url(#bg)"/>
+  <text x="60" y="66" fill="#f8fafc" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="29" font-weight="700">Measured colour difference → Resolve 3D LUT</text>
+  <text x="60" y="102" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16">Same scene geometry · colour changes only · unobserved cells remain identity</text>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+    <rect x="60" y="146" width="230" height="210" rx="16" fill="#0f172a" stroke="#334155"/>
+    <rect x="78" y="184" width="194" height="118" rx="10" fill="url(#original)"/>
+    <path d="M78 276 Q130 230 178 260 T272 222 V302 H78Z" fill="#071525" opacity="0.55"/>
+    <circle cx="230" cy="215" r="24" fill="#f8d7a4" opacity="0.72"/>
+    <text x="78" y="174" fill="#cbd5e1" font-size="15">ORIGINAL RGB</text>
+    <text x="78" y="334" fill="#64748b" font-size="14">aligned digital frame</text>
+
+    <rect x="350" y="146" width="230" height="210" rx="16" fill="#0f172a" stroke="#334155"/>
+    <rect x="368" y="184" width="194" height="118" rx="10" fill="url(#corrected)"/>
+    <path d="M368 276 Q420 230 468 260 T562 222 V302 H368Z" fill="#062129" opacity="0.55"/>
+    <circle cx="520" cy="215" r="24" fill="#ffca82" opacity="0.78"/>
+    <text x="368" y="174" fill="#cbd5e1" font-size="15">CORRECTED RGB</text>
+    <text x="368" y="334" fill="#64748b" font-size="14">aligned reference composite</text>
+
+    <rect x="640" y="146" width="220" height="210" rx="16" fill="#0f172a" stroke="#334155"/>
+    <rect x="662" y="184" width="176" height="118" rx="10" fill="url(#delta)"/>
+    <g fill="none" stroke="#e2e8f0" stroke-width="2" opacity="0.75">
+      <path d="M682 276 L715 235 L748 260 L781 210 L818 240"/>
+      <circle cx="682" cy="276" r="4" fill="#60a5fa"/><circle cx="715" cy="235" r="4" fill="#93c5fd"/><circle cx="748" cy="260" r="4" fill="#f8fafc"/><circle cx="781" cy="210" r="4" fill="#fdba74"/><circle cx="818" cy="240" r="4" fill="#fb923c"/>
+    </g>
+    <text x="662" y="174" fill="#cbd5e1" font-size="15">ΔRGB SAMPLES</text>
+    <text x="662" y="334" fill="#64748b" font-size="14">corrected − original</text>
+
+    <rect x="920" y="146" width="220" height="210" rx="16" fill="#0f172a" stroke="#334155"/>
+    <g transform="translate(955 184)" fill="none" stroke-width="1.4">
+      <path d="M0 36 L72 0 L146 36 L74 72 Z M0 36 V116 L74 154 L74 72 M146 36 V116 L74 154" stroke="#64748b"/>
+      <path d="M25 24 V128 M49 12 V141 M98 12 V141 M122 24 V128 M0 62 L74 99 L146 62 M0 89 L74 126 L146 89" stroke="#334155"/>
+      <circle cx="25" cy="49" r="5" fill="#38bdf8" stroke="none"/><circle cx="74" cy="72" r="5" fill="#f8fafc" stroke="none"/><circle cx="122" cy="104" r="5" fill="#fb923c" stroke="none"/>
+    </g>
+    <text x="942" y="174" fill="#cbd5e1" font-size="15">33³ LUT</text>
+    <text x="942" y="334" fill="#64748b" font-size="14">average · scale · clamp · .cube</text>
+  </g>
+  <g stroke="#64748b" stroke-width="3" marker-end="url(#arrow)"><path d="M298 250 H338"/><path d="M588 250 H628"/><path d="M868 250 H908"/></g>
+  <text x="600" y="430" text-anchor="middle" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18">Observed lattice cells receive the averaged correction; every other cell stays neutral.</text>
+</svg>
