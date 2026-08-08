@@ -1,0 +1,27 @@
+.DS_Store
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.env
+.env.*
+*.log
+*.tmp
+
+# Film sources, Resolve projects, reference pairs, and generated LUTs stay local.
+*.drp
+*.drx
+*.cube
+*.ilut
+*.olut
+*.dpx
+*.exr
+*.tif
+*.tiff
+*.jpg
+*.jpeg
+*.png
+*.mov
+*.mp4
+*.mkv
+private_data/
