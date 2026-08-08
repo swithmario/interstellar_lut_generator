@@ -5,6 +5,8 @@ I built the project to investigate whether colour differences measured from a fi
 
 The visible result is a standard 3D LUT such as `Interstellar_Cliff_RGB_OK.cube`, ready to import into Resolve for visual evaluation.
 
+![RGB delta sampling pipeline for the 33-cubed LUT](docs/lut_delta_pipeline.svg)
+
 ## Method
 
 The primary script preserves a direct RGB delta-mapping experiment:
