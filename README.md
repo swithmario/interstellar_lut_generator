@@ -5,11 +5,18 @@ I built the project to investigate whether colour differences measured from a fi
 
 The visible result is a standard 3D LUT such as `Interstellar_Cliff_RGB_OK.cube`, ready to import into Resolve for visual evaluation.
 
-![Actual LUT applied to a deterministic RGB test chart](docs/lut_verification.png)
+## Film-cell LUT example
 
-The figure comes from the actual `gen_lut.py` output. The example supplies a
-synthetic RGB chart and a known colour adjustment, reads the exported `.cube`,
-and applies it to the chart. No film frame or generated scene illustration is used.
+Both panels show the same frame from the 4K Blu-ray of *Interstellar*. The LUT
+was generated using an IMAX film cell of that frame as the colour reference.
+The bluer panel shows the LUT applied to the Blu-ray frame.
+
+| Before LUT | After film-cell LUT |
+| --- | --- |
+| ![Blu-ray frame before the LUT, displayed in Rec.709 SDR](docs/lut_before_rec709.png) | ![The same Blu-ray frame after the film-cell LUT, displayed in Rec.709 SDR](docs/lut_after_rec709.png) |
+
+Both images use the same Rec.2020/PQ 1,000-nit to Rec.709 SDR conversion.
+See the [display conversion recipe](docs/film_cell_example_15SEP2026.md).
 
 ## Method
 
@@ -52,7 +59,15 @@ The default experiment uses a 33³ grid, applies the measured delta at 60% stren
 Use a dedicated directory with exactly one matching image pair. If the pair is
 missing or ambiguous, the current primary script writes an identity cube.
 
-## Reproduce the figure
+## Reproducible generator check
+
+![Actual LUT applied to a deterministic RGB test chart](docs/lut_verification.png)
+
+This separate chart comes from the actual `gen_lut.py` output. It supplies a
+synthetic RGB chart and a known colour adjustment, reads the exported `.cube`,
+and applies it to the chart.
+
+### Reproduce the chart
 
 ```bash
 python -m pip install matplotlib
@@ -73,18 +88,19 @@ colour input or a DaVinci Resolve import.
 | `test.py` | Earlier full-strength RGB delta variant with explicit missing-file and resolution checks. |
 | `sanity.py` | Write a neutral 33³ identity cube for channel/order checks in Resolve. |
 | `examples/generate_demo.py` | Run the primary script on a known RGB chart, check the exported cube, and plot the applied result. |
+| `examples/convert_hdr_pair.py` | Apply one explicit HDR-to-SDR display transform to a before/after PNG pair. Requires FFmpeg. |
 
 ## Reference workflow
 
 The original workflow prepared the two input images manually in DaVinci Resolve. A digital frame and a film reference were aligned first. The normal digital frame became `Original_*`; a colour-reference composite became `Corrected_*`. Those files must have identical dimensions and should already represent the same scene geometry.
 
-Resolve project archives, embedded stills, source-film frames, disc-derived media, and generated LUTs are deliberately excluded from the public repository. The source-only history contains only the Python experiments and their documentation.
+The two Rec.709 demonstration images above are included for project presentation. Resolve project archives, source-film files, film-cell scans, original reference pairs, and generated LUTs remain outside this public repository.
 
 ## Scope
 
 This is a research prototype, not a calibrated restoration pipeline. A normal
 image pair samples only a small part of RGB space; unobserved bins remain
-neutral. The verification chart deliberately covers every bin. The scripts do
+neutral. The verification chart deliberately covers every bin. The core LUT scripts do
 not interpolate sparse measurements, convert colour spaces, match exposure,
 or validate against a film projection. Input scaling is inferred from pixel
 values, so bit depth and channel handling need further validation. The output

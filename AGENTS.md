@@ -25,9 +25,11 @@ synthetic chart. Generated inputs and cube files remain outside Git.
 
 ## Boundary and limitations
 
-This public repository contains the focused experiment. Keep film frames,
-Resolve archives, private image pairs, generated LUTs, and environments out of
-Git. The private source archive remains separate. No new licence is granted
+This public repository contains the focused experiment. The owner authorized
+two supplied demonstration screenshots, after SDR conversion, on 15SEP2026.
+Only `docs/lut_before_rec709.png` and `docs/lut_after_rec709.png` are the film-frame
+presentation exception. Keep source-film files, film-cell scans, Resolve archives,
+original image pairs, generated LUTs, and environments out of Git. The private source archive remains separate. No new licence is granted
 by this documentation change.
 
 The primary script silently writes an identity cube when the input pair is
@@ -38,8 +40,15 @@ sparse-grid interpolation, or calibrated film-colour reconstruction.
 
 ## Current state and next work
 
-The 15SEP2026 README image is generated from actual script output. The former
-illustrative pipeline diagram was removed. Before broader use, add explicit
+The README leads with the owner-selected film-cell LUT before/after pair.
+`examples/convert_hdr_pair.py` applies the same explicit Rec.2020/PQ 1,000-nit
+to 100-nit Rec.709 conversion to both inputs. It uses NumPy, Pillow, and FFmpeg
+with fixed Mobius settings; its command and verification are in
+`docs/film_cell_example_15SEP2026.md`. The input display tags are deliberately
+overridden only through the explicit source-assumption flag. Do not infer the
+original HDR encoding from a screenshot profile. The synthetic chart remains
+the independent check of the primary LUT generator. The former illustrative
+pipeline diagram was removed. Before broader use, add explicit
 input paths and validation, verify bit-depth handling, and review the earlier
 `test.py` variant's output order. Do not present that predecessor as equivalent
 to the checked primary path. Use lowercase_snake_case for new first-party files.
