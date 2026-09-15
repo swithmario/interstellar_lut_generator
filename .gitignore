@@ -25,3 +25,6 @@ __pycache__/
 *.mp4
 *.mkv
 private_data/
+
+# Reproducible chart from examples/generate_demo.py.
+!docs/lut_verification.png
