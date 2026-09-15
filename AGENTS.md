@@ -25,8 +25,8 @@ synthetic chart. Generated inputs and cube files remain outside Git.
 
 ## Boundary and limitations
 
-This public repository contains the focused experiment. The owner authorized
-two supplied demonstration screenshots, after SDR conversion, on 15SEP2026.
+This public repository contains the focused experiment. The publication scope includes
+the two demonstration screenshots after SDR conversion, approved on 15SEP2026.
 Only `docs/lut_before_rec709.png` and `docs/lut_after_rec709.png` are the film-frame
 presentation exception. Keep source-film files, film-cell scans, Resolve archives,
 original image pairs, generated LUTs, and environments out of Git. The private source archive remains separate. No new licence is granted
@@ -40,7 +40,7 @@ sparse-grid interpolation, or calibrated film-colour reconstruction.
 
 ## Current state and next work
 
-The README leads with the owner-selected film-cell LUT before/after pair.
+The README leads with the film-cell LUT before/after pair.
 `examples/convert_hdr_pair.py` applies the same explicit Rec.2020/PQ 1,000-nit
 to 100-nit Rec.709 conversion to both inputs. It uses NumPy, Pillow, and FFmpeg
 with fixed Mobius settings; its command and verification are in
@@ -53,3 +53,16 @@ input paths and validation, verify bit-depth handling, and review the earlier
 `test.py` variant's output order. Do not present that predecessor as equivalent
 to the checked primary path. Use lowercase_snake_case for new first-party files.
 State Mac Mini M4 in commits made on this machine.
+
+## Documentation and Git identity
+
+Use first person for personal decisions and experience in README prose. Use
+direct technical language for software behaviour and instructions. Do not
+describe the maintainer as "the owner". Preserve quoted source wording and
+technical ownership terms.
+
+Local commits must use `swithmario` and
+`28229111+swithmario@users.noreply.github.com`. Verify both author and committer
+before pushing. Histories were corrected on 15SEP2026; compare an older checkout
+with the corrected remote before merging or pushing it. Record Mac Mini M4 in
+commits made on this machine.

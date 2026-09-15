@@ -2,7 +2,7 @@
 
 ## Image identity
 
-The owner supplied the two screenshots from the original LUT workflow on
+These two screenshots show my original LUT workflow, prepared for this page on
 15SEP2026. Both show the same 4K Blu-ray frame. The colour reference used to
 create the LUT was an IMAX film cell of that frame. The bluer supplied image is
 the result after the LUT. The other supplied image is the before view.
@@ -15,7 +15,7 @@ synthetic chart checks the current `gen_lut.py` implementation.
 
 ## Display transform
 
-The owner selected this input interpretation:
+I used these settings for the display conversion:
 
 | Parameter | Value |
 | --- | --- |
@@ -31,8 +31,7 @@ The owner selected this input interpretation:
 | Output metadata | BT.709 ICC profile and matching PNG cICP `[1, 1, 0, 1]` |
 
 The source files carry Display P3 screenshot tags. The explicit
-`--assume-rec2020-pq` option implements the owner's chosen interpretation of
-their sample values. Source metadata is retained in the private originals;
+`--assume-rec2020-pq` option treats their sample values as Rec.2020/PQ. Source metadata is retained in the private originals;
 it is not copied into the converted PNGs.
 
 PQ code 1 represents 10,000 cd/m². A 1,000-nit PQ reference is approximately
