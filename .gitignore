@@ -28,3 +28,8 @@ private_data/
 
 # Reproducible chart from examples/generate_demo.py.
 !docs/lut_verification.png
+
+# Owner-selected SDR documentation pair. Original media stays outside Git.
+!docs/lut_before_rec709.png
+!docs/lut_after_rec709.png
+._*
